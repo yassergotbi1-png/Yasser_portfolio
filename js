@@ -28,10 +28,30 @@ let darkToggle = document.querySelector('#darkmode-toggle');
 darkToggle.onclick = () => {
     document.body.classList.toggle('dark-mode');
 
-    // تغيير الأيقونة عند التبديل
+
     if(document.body.classList.contains('dark-mode')) {
         darkToggle.classList.replace('bx-moon', 'bx-sun');
     } else {
         darkToggle.classList.replace('bx-sun', 'bx-moon');
     }
 }
+//EMAIL OF FUNCTION//
+
+(function(){
+   emailjs.init("y51is3mHZO_VRvhjZ");
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("SERVICE_ID_HERE", "TEMPLATE_ID_HERE", this)
+        .then(function() {
+            alert("Message sent successfully ✅");
+        }, function(error) {
+            alert("Failed ❌");
+        });
+
+    this.reset();
+});
+
+

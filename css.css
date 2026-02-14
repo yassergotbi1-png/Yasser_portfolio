@@ -534,17 +534,18 @@ body, section, .services-box, .btn, .header, .footer {
 }
 @media (max-width: 991px){
 
-    /* إخفاء روابط الهيدر فقط والزر */
+   
     .navbar a,
     #menu-icon {
         display: none !important;
     }
 
-    /* الهيدر يظل مع اللوغو فقط */
+  
     .header {
-        justify-content: space-between; /* اللوغو يبقى على اليسار */
+        justify-content: space-between;
         padding: 2rem 4%;
     }
 
 }
+
 
