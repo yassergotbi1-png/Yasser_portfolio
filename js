@@ -37,21 +37,33 @@ darkToggle.onclick = () => {
 }
 //EMAIL OF FUNCTION//
 
-(function(){
-   emailjs.init("y51is3mHZO_VRvhjZ");
+// تشغيل EmailJS بالمفتاح العام
+(function () {
+    emailjs.init("y51is3mHZO_VRvhjZ");
 })();
 
-document.getElementById("contact-form").addEventListener("submit", function(e) {
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    emailjs.sendForm("SERVICE_ID_HERE", "TEMPLATE_ID_HERE", this)
-        .then(function() {
-            alert("Message sent successfully ✅");
-        }, function(error) {
-            alert("Failed ❌");
-        });
+    // Loading
+    status.innerHTML = '<span class="spinner"></span> Sending...';
+    status.className = "form-status loading";
 
-    this.reset();
+    // إرسال الإيميل
+    emailjs.sendForm("service_jcp0jwt", "template_378x8m6", this)
+        .then(() => {
+            status.innerHTML = "✅ Message sent successfully!";
+            status.className = "form-status success";
+            form.reset();
+        })
+        .catch((error) => {
+            console.error(error);
+            status.innerHTML = "❌ Failed to send message. Try again.";
+            status.className = "form-status error";
+        });
 });
 
 
